@@ -17,7 +17,7 @@
 
 ## 🌐 在线体验
 
-👉 [点我进入小小记账本 V2](https://your-streamlit-link.com)
+👉 [点我进入小小记账本 V2]https://budget-tracker-v2-wqbngh2zn5fmtchsh5xfyw.streamlit.app/
 
 ---
 
