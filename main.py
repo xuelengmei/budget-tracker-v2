@@ -2,7 +2,6 @@ import streamlit as st
 
 st.set_page_config(page_title="小小记账本", page_icon="📔")
 
-# 初始化 session
 if "users" not in st.session_state:
     st.session_state.users = {}
 if "logged_in_user" not in st.session_state:
@@ -11,7 +10,6 @@ if "logged_in_user" not in st.session_state:
 def logout():
     st.session_state.logged_in_user = None
 
-# 登录后显示欢迎内容
 if st.session_state.logged_in_user:
     st.success(f"欢迎回来，{st.session_state.logged_in_user}！")
     st.button("🚪 退出登录", on_click=logout)
