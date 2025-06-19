@@ -48,3 +48,23 @@ else:
 
     st.altair_chart(bar_chart, use_container_width=True)
 
+st.subheader("📅 每日收支趋势图")
+
+df["日期"] = pd.to_datetime(df["日期"])
+df_recent = df[df["日期"] >= pd.Timestamp.now() - pd.Timedelta(days=30)]
+
+if df_recent.empty:
+    st.info("近30天暂无记录，无法绘制趋势图~")
+else:
+    trend = df_recent.groupby(["日期", "类型"])["金额"].sum().reset_index()
+
+    line_chart = alt.Chart(trend).mark_line(point=True).encode(
+        x="日期:T",
+        y="金额:Q",
+        color="类型:N",
+        tooltip=["日期", "类型", "金额"]
+    ).properties(height=300)
+
+    st.altair_chart(line_chart, use_container_width=True)
+
+
